@@ -5,6 +5,8 @@ import Analytics from './components/Analytics';
 import FinancingOptions from './components/FinancingOptions';
 import InvoiceList from './components/InvoiceList';
 import Navbar from './components/Navbar';
+import CreditScore from './components/CreditScore';
+import ErrorBoundary from './ErrorBoundary';
 import PropTypes from 'prop-types';
 import useInvoiceStore from './stores/invoiceStore';
 
@@ -38,6 +40,9 @@ const InvoiceFinancingApp = () => {
               </div>
               <div>
                 <Analytics invoices={invoices} />
+                <ErrorBoundary>
+                <CreditScore className="mt-8" /> 
+                </ErrorBoundary>
                 <RecentActivity className="mt-8" />
               </div>
             </div>
