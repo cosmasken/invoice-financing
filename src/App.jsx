@@ -41,13 +41,13 @@ const InvoiceFinancingApp = () => {
               <div>
                 <Analytics invoices={invoices} />
                 <ErrorBoundary>
-                <CreditScore className="mt-8" /> 
+                <CreditScore className="mt-8 mb-8" /> 
                 </ErrorBoundary>
-                <RecentActivity className="mt-8" />
               </div>
             </div>
           </div>
         </div>
+        <RecentActivity className="mt-8" />
         {showNewInvoiceModal && (
           <NewInvoiceModal 
             onClose={() => setShowNewInvoiceModal(false)} 

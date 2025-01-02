@@ -7,6 +7,8 @@ const useInvoiceStore = create((set) => ({
   paymentType: 'XRP', // Default payment type (e.g., 'XRP', 'USD', etc.)
   creditScore: 700, // Default credit score of the user
   financingStatus: 'pending', // Status of financing request (e.g., 'pending', 'approved', 'denied')
+  accountType: '',
+  setAccountType: (accountType) => set({ accountType }),
   
   // Getter and setter for invoices
   addInvoice: (invoice) => set((state) => ({
