@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import useInvoiceStore from '../stores/invoiceStore';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const OnboardingForm = () => {
   const [step, setStep] = useState(1);
@@ -10,12 +10,12 @@ const OnboardingForm = () => {
   const [details, setDetails] = useState('');
   const { setAccountType: setStoreAccountType } = useInvoiceStore();
 
-  const navigate = useNavigate(); // Hook to navigate between routes
+  // const navigate = useNavigate(); // Hook to navigate between routes
 
-  const proceed = () => {
-    // Navigate to the dashboard
-    navigate('/dashboard');
-  };
+  // const proceed = () => {
+  //   // Navigate to the dashboard
+  //   navigate('/dashboard');
+  // };
 
   const handleNextStep = () => {
     if (step === 1) {
@@ -133,7 +133,8 @@ const OnboardingForm = () => {
               onClick={() => alert('Proceeding to dashboard')}
               className="bg-primary text-white p-2 rounded-md w-full"
             >
-              Go to Dashboard
+              <Link to="/products"> Go to Dashboard</Link>
+             
             </button>
           </div>
         )}
