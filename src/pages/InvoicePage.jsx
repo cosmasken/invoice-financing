@@ -1,7 +1,7 @@
 import  { useState } from 'react';
-import FinancingOptions from './FinancingOptions';
-import FinanceNowModal from './FinanceNowModal';
-import InvoiceDetailsModal from './InvoiceDetailsModal';
+import FinancingOptions from '../components/FinancingOptions';
+import FinanceNowModal from '../components/FinanceNowModal';
+import InvoiceDetailsModal from '../components/InvoiceDetailsModal';
 
 const InvoicePage = () => {
   const [selectedInvoice, setSelectedInvoice] = useState({

@@ -8,7 +8,7 @@ export const connectXRP = async () => {
 };
 
 export const createWallet = async () => {
-  const fund_result = await client.fundWallet()
+  const fund_result = await xrpClient.fundWallet()
   const wallet = fund_result.wallet
 }
 

@@ -7,22 +7,31 @@ const OnboardingForm = () => {
   const [accountType, setAccountType] = useState('');
   const [companyName, setCompanyName] = useState('');
   const [businessType, setBusinessType] = useState('');
+  const [email, setEmail] = useState('');
   const [details, setDetails] = useState('');
+  const [errors, setErrors] = useState({});
   const { setAccountType: setStoreAccountType } = useInvoiceStore();
 
-  // const navigate = useNavigate(); // Hook to navigate between routes
-
-  // const proceed = () => {
-  //   // Navigate to the dashboard
-  //   navigate('/dashboard');
-  // };
+  const validateFields = () => {
+    const newErrors = {};
+    if (!accountType) newErrors.accountType = 'Please select an account type.';
+    if (!companyName) newErrors.companyName = 'Company name is required.';
+    if (!businessType) newErrors.businessType = 'Please select a business type.';
+    if (!email) {
+      newErrors.email = 'Email is required.';
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      newErrors.email = 'Please enter a valid email address.';
+    }
+    if (!details) newErrors.details = 'Additional details are required.';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleNextStep = () => {
-    if (step === 1) {
-      // Save the account type to the store
-      setStoreAccountType(accountType);
+    if (validateFields()) {
+      if (step === 1) setStoreAccountType(accountType);
+      setStep(step + 1);
     }
-    setStep(step + 1);
   };
 
   const handlePreviousStep = () => setStep(step - 1);
@@ -54,12 +63,12 @@ const OnboardingForm = () => {
                   Seller of Invoice
                 </button>
               </div>
+              {errors.accountType && <p className="text-red-500 text-sm">{errors.accountType}</p>}
             </div>
 
             <div className="mt-4">
               <button
                 onClick={handleNextStep}
-                disabled={!accountType}
                 className="bg-secondary text-white p-2 rounded-md w-full"
               >
                 Next
@@ -77,7 +86,9 @@ const OnboardingForm = () => {
 
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="companyName" className="block text-sm text-neutral.dark">Company Name</label>
+                  <label htmlFor="companyName" className="block text-sm text-neutral.dark">
+                    Company Name
+                  </label>
                   <input
                     type="text"
                     id="companyName"
@@ -86,20 +97,44 @@ const OnboardingForm = () => {
                     className="w-full p-2 border rounded-md"
                     placeholder="Enter your company name"
                   />
+                  {errors.companyName && <p className="text-red-500 text-sm">{errors.companyName}</p>}
                 </div>
                 <div>
-                  <label htmlFor="businessType" className="block text-sm text-neutral.dark">Type of Business</label>
-                  <input
-                    type="text"
+                  <label htmlFor="businessType" className="block text-sm text-neutral.dark">
+                    Type of Business
+                  </label>
+                  <select
                     id="businessType"
                     value={businessType}
                     onChange={(e) => setBusinessType(e.target.value)}
                     className="w-full p-2 border rounded-md"
-                    placeholder="Enter your type of business"
-                  />
+                  >
+                    <option value="">Select a type</option>
+                    <option value="Retail">Retail</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Healthcare">Healthcare</option>
+                  </select>
+                  {errors.businessType && <p className="text-red-500 text-sm">{errors.businessType}</p>}
                 </div>
                 <div>
-                  <label htmlFor="details" className="block text-sm text-neutral.dark">Additional Details</label>
+                  <label htmlFor="email" className="block text-sm text-neutral.dark">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full p-2 border rounded-md"
+                    placeholder="Enter your email"
+                  />
+                  {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+                </div>
+                <div>
+                  <label htmlFor="details" className="block text-sm text-neutral.dark">
+                    Additional Details
+                  </label>
                   <textarea
                     id="details"
                     value={details}
@@ -107,17 +142,20 @@ const OnboardingForm = () => {
                     placeholder="Provide additional details"
                     className="w-full p-2 border rounded-md"
                   />
+                  {errors.details && <p className="text-red-500 text-sm">{errors.details}</p>}
                 </div>
               </div>
             </div>
 
             <div className="mt-4 flex space-x-4">
-              <button onClick={handlePreviousStep} className="bg-neutral.light text-neutral.dark p-2 rounded-md w-full">
+              <button
+                onClick={handlePreviousStep}
+                className="bg-neutral.light text-neutral.dark p-2 rounded-md w-full"
+              >
                 Previous
               </button>
               <button
                 onClick={handleNextStep}
-                disabled={!companyName || !businessType || !details}
                 className="bg-secondary text-white p-2 rounded-md w-full"
               >
                 Next
@@ -133,8 +171,7 @@ const OnboardingForm = () => {
               onClick={() => alert('Proceeding to dashboard')}
               className="bg-primary text-white p-2 rounded-md w-full"
             >
-              <Link to="/products"> Go to Dashboard</Link>
-             
+              <Link to="/">Go to Dashboard</Link>
             </button>
           </div>
         )}

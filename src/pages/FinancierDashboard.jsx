@@ -1,9 +1,9 @@
 import React from 'react';
-import Analytics from './components/Analytics';
-import Navbar from './components/Navbar';
-import FinancingRequests from './components/FinancingRequests';
-import LoanManagement from './components/LoanManagement';
-import TransactionHistory from './components/TransactionHistory';
+import Analytics from '../components/Analytics';
+import Navbar from '../components/Navbar';
+import FinancingRequests from '../components/FinancingRequests';
+import LoanManagement from '../components/LoanManagement';
+import TransactionHistory from '../components/TransactionHistory';
 
 const FinancierDashboard = () => (
   <div className="flex flex-col items-center justify-center min-h-screen bg-neutral-light">

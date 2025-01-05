@@ -8,6 +8,11 @@ const useNetwork = () => {
     if (network === 'xrp') {
       return networkClient.mintNFT(invoiceData); // XRP minting logic
     }
+
+    if (network === 'hedera') {
+      return networkClient.mintNFT(invoiceData); // XRP minting logic
+    }
+
     // Add Ethereum or other network minting logic
   };
 

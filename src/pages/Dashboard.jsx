@@ -1,15 +1,15 @@
 import { useState } from 'react';
-import RecentActivity from './components/RecentActivity';
-import DashboardSummary from './components/DashboardSummary';
-import Analytics from './components/Analytics';
-import FinancingOptions from './components/FinancingOptions';
-import InvoiceList from './components/InvoiceList';
-import Navbar from './components/Navbar';
-import CreditScore from './components/CreditScore';
-import ErrorBoundary from './ErrorBoundary';
+import RecentActivity from '../components/RecentActivity';
+import DashboardSummary from '../components/DashboardSummary';
+import Analytics from '../components/Analytics';
+import FinancingOptions from '../components/FinancingOptions';
+import InvoiceList from '../components/InvoiceList';
+import Navbar from '../components/Navbar';
+import CreditScore from '../components/CreditScore';
+import ErrorBoundary from '../ErrorBoundary';
 import InvoicePage from './components/InvoicePage';
 import PropTypes from 'prop-types';
-import useInvoiceStore from './stores/invoiceStore';
+import useInvoiceStore from '../stores/invoiceStore';
 
 
 const InvoiceFinancingApp = () => {
