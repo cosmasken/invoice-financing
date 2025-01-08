@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { xrpClient } from '../networks/xrp/xrpClient'
 
 // Static Data for Networks and Currencies
 const currencies = [
@@ -23,6 +24,16 @@ const Wallet = () => {
       };
       setWallets([...wallets, newWallet]);
     }
+  };
+
+  const xrpTest = () => {
+    const connected =  xrpClient.connect();
+    const wallet = xrpClient.createWallet();
+console.log(wallet.classicAddress); // Display the wallet address
+
+const balance  = xrpClient.checkBalance(wallet.classicAddress);
+console.log("balance is",balance)
+
   };
 
   return (
@@ -78,6 +89,12 @@ const Wallet = () => {
           disabled={!selectedCurrency || !selectedNetwork}
         >
           Add Wallet
+        </button>
+        <button
+        onClick={xrpTest}
+        className="bg-primary text-white px-6 py-2 rounded-lg shadow-button hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
+        >
+          Create xrp
         </button>
       </div>
 

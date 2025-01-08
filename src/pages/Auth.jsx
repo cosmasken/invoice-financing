@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ethers } from 'ethers';
+import { useNavigate } from 'react-router-dom'
 
 const Auth = () => {
   const [step, setStep] = useState('options'); // 'options', 'otp', 'success'
@@ -11,6 +12,8 @@ const Auth = () => {
   const [phone, setPhone] = useState('');
   const [generatedOtp, setGeneratedOtp] = useState('');
   const [timer, setTimer] = useState(0);
+
+  const navigate = useNavigate();
 
   // Handle MetaMask connection
   const handleMetaMask = async () => {
@@ -186,7 +189,8 @@ const Auth = () => {
             <p className="text-gray-700 mb-6">You have successfully signed up/logged in.</p>
             <button
               className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              onClick={() => alert('Proceeding to account setup')}
+
+              onClick={() => navigate('/onboarding')}
             >
               Proceed to Account Setup
             </button>

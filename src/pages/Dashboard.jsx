@@ -7,7 +7,7 @@ import InvoiceList from '../components/InvoiceList';
 import Navbar from '../components/Navbar';
 import CreditScore from '../components/CreditScore';
 import ErrorBoundary from '../ErrorBoundary';
-import InvoicePage from './components/InvoicePage';
+import InvoicePage from './InvoicePage';
 import PropTypes from 'prop-types';
 import useInvoiceStore from '../stores/invoiceStore';
 
