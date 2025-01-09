@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./hooks/useAuth"; // Replace with your actual auth hook
 import Dashboard from "./pages/Dashboard";

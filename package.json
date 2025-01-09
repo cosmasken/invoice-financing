@@ -25,6 +25,8 @@
     "react-icons": "^5.4.0",
     "react-router-dom": "^7.1.1",
     "sqlite3": "^5.1.7",
+    "sweetalert2": "^11.6.13",
+    "tailwind-merge": "^2.6.0",
     "xrpl": "^4.1.0",
     "zustand": "^5.0.2"
   },

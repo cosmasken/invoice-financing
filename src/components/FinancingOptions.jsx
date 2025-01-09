@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 const FinancingOptions = ({ selectedInvoice, onOpenFinanceModal, onOpenDetailsModal }) => (
-  <div className="flex items-center justify-center min-h-screen bg-neutral-light">
+  <div className="flex items-center justify-center">
     <div className="bg-white rounded-lg shadow-xl p-8 w-full max-w-md">
       <h2 className="text-xl font-semibold text-gray-800 mb-4">Financing Options</h2>
       {selectedInvoice ? (

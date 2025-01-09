@@ -39,12 +39,12 @@ const NotFound = () => {
           >
             Dashboard
           </a>
-          <a
-            href="/help"
+          {/* <a
+            href="/auth"
             className="block text-blue-500 hover:underline"
           >
-            Help Center
-          </a>
+            Login
+          </a> */}
         </div>
       </div>
     </div>

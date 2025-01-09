@@ -11,6 +11,12 @@ import FinancierDashboard from './pages/OnboardingForm.jsx'
 import Wallet from './pages/Wallet.jsx'
 import InvoicePage from './pages/InvoicePage.jsx'
 import NotFound from './pages/NotFound.jsx'
+import OnrampOfframp from './pages/OnrampOfframp.jsx';
+import LogoutConfirmation from './pages/LogoutConfirmation.jsx'
+import Notifications from './pages/Notifications.jsx'
+import ProfileManagement from './pages/ProfileManagement.jsx'
+import SecuritySettings from './pages/SecuritySettings.jsx'
+import PaymentMethods from './pages/PaymentMethods.jsx';
 import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
@@ -27,6 +33,12 @@ createRoot(document.getElementById('root')).render(
             <Route path="wallet" element={<Wallet />} />
             <Route path="auth" element={<Auth />} />
             <Route path="invoices" element={<InvoicePage />} />
+            <Route path='onramp-offramp' element={<OnrampOfframp/>}/>
+            <Route path="logout" element={<LogoutConfirmation />} />
+            <Route path="notifications" element={<Notifications />} />
+            <Route path="profile" element={<ProfileManagement />} />
+            <Route path="security" element={<SecuritySettings />} />
+            <Route path="payment-methods" element={<PaymentMethods />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </WalletProvider>
