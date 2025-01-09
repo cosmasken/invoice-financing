@@ -2,8 +2,8 @@ import { StrictMode } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import { WalletProvider } from './context/WalletContext';
-import { NetworkProvider } from './context/NetworkProvider'
+import { WalletProvider } from './context/WalletContext.jsx';
+import { NetworkProvider } from './context/NetworkContext.jsx'
 import Dashboard from './pages/Dashboard.jsx'
 import Auth from './pages/Auth.jsx'
 import OnboardingForm from './pages/OnboardingForm.jsx'

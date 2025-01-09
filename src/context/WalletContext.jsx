@@ -1,6 +1,6 @@
 import { createContext, useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useNetwork } from './NetworkProvider'; // Import the NetworkProvider context
+import { useNetwork } from './NetworkContext'; // Import the NetworkProvider context
 
 const WalletContext = createContext();
 
