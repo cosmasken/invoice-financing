@@ -1,4 +1,4 @@
-import { Client, Wallet } from 'xrpl';
+import { Client, Wallet, xrpToDrops, dropsToXrp} from 'xrpl';
 
 export const xrpClient = {
     /**
@@ -6,7 +6,7 @@ export const xrpClient = {
      * @returns {Client} The connected client instance.
      */
     async connect() {
-        const client = new Client("wss://s2.ripple.com"); // Connect to the Ripple public server
+        const client = new Client("wss://s.altnet.rippletest.net:51233/"); // Connect to the Ripple public server
         await client.connect();
         console.log("Connected to XRP Ledger");
         return client;
@@ -17,6 +17,7 @@ export const xrpClient = {
      * @returns {Wallet} A new XRP wallet with a secret and address.
      */
     createWallet() {
+        this.connect();
         const wallet = Wallet.generate();
         console.log("New wallet created", wallet.classicAddress);
         return wallet;
@@ -27,8 +28,9 @@ export const xrpClient = {
      * @param {string} secret The secret key of the wallet
      * @returns {Wallet} The XRP wallet object.
      */
-    getWalletFromSecret(secret) {
-        const wallet = Wallet.fromSeed(secret);
+    getWalletFromSecret() {
+       // this.connect()
+        const wallet = Wallet.fromSeed('sEd7KzpW8fhARQQFRNNzxySawZ1cL3x');
         console.log("Wallet from secret:", wallet.classicAddress);
         return wallet;
     },
@@ -48,7 +50,7 @@ export const xrpClient = {
         });
 
         const balance = accountInfo.result.account_data.Balance;
-        console.log(`Balance for ${address}: ${balance}`);
+        console.log(`Balance for ${address} : ${balance}`);
         return balance;
     },
 
@@ -97,14 +99,38 @@ export const xrpClient = {
      * @returns {Promise<Object>} The result of the transaction.
      */
     async sendXRP(fromSecret, toAddress, amount) {
-        const wallet = this.getWalletFromSecret(fromSecret);
-        const client = await this.connect();
+          // Define the network client
+          const client = await this.connect();
+          // ... custom code goes here
 
-        // Prepare the payment transaction
-        const transaction = client.preparePaymentTransaction(wallet.classicAddress, toAddress, amount);
+          const wallet = Wallet.fromSeed('sEd7KzpW8fhARQQFRNNzxySawZ1cL3x');
 
-        // Sign and submit the transaction
-        const result = await client.signAndSubmitTransaction(fromSecret, transaction);
-        return result;
+            // Prepare transaction -------------------------------------------------------
+        const prepared = await client.autofill({
+            "TransactionType": "Payment",
+            "Account": wallet.address,
+            "DeliverMax": xrpToDrops("22"),
+            "Destination": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
+        })
+        const max_ledger = prepared.LastLedgerSequence
+        console.log("Prepared transaction instructions:", prepared)
+        console.log("Transaction cost:", dropsToXrp(prepared.Fee), "XRP")
+        console.log("Transaction expires after ledger:", max_ledger)
+
+  
+        
+          // Disconnect when done (If you omit this, Node.js won't end the process)
+          await client.disconnect()
+        // const wallet = this.getWalletFromSecret(fromSecret);
+
+        
+        // const client = await this.connect();
+
+        // // Prepare the payment transaction
+        // const transaction = client.preparePaymentTransaction(wallet.classicAddress, toAddress, amount);
+
+        // // Sign and submit the transaction
+        // const result = await client.signAndSubmitTransaction(fromSecret, transaction);
+        // return result;
     },
 };

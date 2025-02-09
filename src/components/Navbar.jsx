@@ -1,5 +1,6 @@
 import { FiSettings } from 'react-icons/fi';
 import { FaBars } from 'react-icons/fa';
+import { CiBellOn } from 'react-icons/ci';
 import { useState } from 'react';
 
 const Navbar = () => {
@@ -19,6 +20,8 @@ const Navbar = () => {
         >
           <FaBars className="w-6 h-6" />
         </button>
+
+        <CiBellOn className="w-6 h-6" />
         
         {/* Menu (Desktop and Mobile) */}
         <div

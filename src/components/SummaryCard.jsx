@@ -7,7 +7,7 @@ const SummaryCard = ({ title, value, icon, color }) => (
       </div>
       <div>
         <h3 className="text-gray-500 text-sm">{title}</h3>
-        <p className="text-2xl font-semibold">{value}</p>
+        <p className="text-sm font-semibold whitespace-nowrap">{value}</p>
       </div>
     </div>
   );

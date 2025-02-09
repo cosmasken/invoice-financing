@@ -3,13 +3,13 @@
 
 ## Overview
 
-This application is a modern platform for invoice financing, providing functionalities such as:
+This application is an open-source platform for invoice financing, providing functionalities such as:
 
 - Creating and managing wallets for multiple currencies and networks.
 - Viewing and financing invoices.
-- Minting invoices as NFTs (e.g., on XRP or HBAR networks).
+- Minting invoices as NFTs on multiple blockchain networks (e.g., XRP Ledger, Hedera Hashgraph, EVM-compatible chains, and Aptos).
 
-The app is built with a focus on scalability and seamless user experience, adhering to consistent design styles throughout.
+The app is built with a focus on scalability and seamless user experience, adhering to consistent design styles throughout. As a public goods project, it is designed to be accessible and beneficial to the broader Web3 ecosystem.
 
 ## Features
 
@@ -43,7 +43,10 @@ The app is built with a focus on scalability and seamless user experience, adher
 
 ### Blockchain
 
-- **XRP Ledger** and **Hedera Hashgraph (HBAR)**: For minting invoices as NFTs and managing blockchain transactions.
+- **XRP Ledger** (Integrated): Used for NFT minting and transaction management.
+- **Hedera Hashgraph (HBAR)**(Integrated): Supports invoice minting and blockchain transactions.
+- **EVM Compatible Chains**(In Progress): Enabling smart contract-based invoice financing.
+- **Aptos**(In Progress): (Planned): Expanding to Move-based smart contract functionality.
 
 ## Installation
 
@@ -65,9 +68,11 @@ The app is built with a focus on scalability and seamless user experience, adher
 
 - Configure your `.env` file for backend APIs, blockchain credentials, and database URLs. Example:
   ```env
-  REACT_APP_API_URL=http://localhost:5000
-  REACT_APP_XRP_NETWORK=testnet
-  REACT_APP_HBAR_NETWORK=testnet
+REACT_APP_API_URL=http://localhost:5000
+REACT_APP_XRP_NETWORK=testnet
+REACT_APP_HBAR_NETWORK=testnet
+REACT_APP_EVM_NETWORK=sepolia
+REACT_APP_APTOS_NETWORK=testnet
   ```
 
 ## Folder Structure
@@ -133,7 +138,7 @@ src/
 
 ## Donations
 
-Support the development and growth of this application by donating in XRP, HBAR, or other popular currencies. Your contributions help us enhance the platform and add more features for the community.
+Support the development and growth of this public goods project by donating in XRP, HBAR, Whitechain, Aptos, or other cryptocurrencies. Your contributions help us enhance the platform and add more features for the community.
 
 ### XRP Donations
 - **Wallet Address**: `rUzWJkXyEtT8ekSSxkBYPqCvHpngcy6Fks`
@@ -146,7 +151,7 @@ Support the development and growth of this application by donating in XRP, HBAR,
 ### Popular Currencies
 You can also support us using other popular cryptocurrencies:
 - **Bitcoin (BTC)**: `1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa`
-- **Ethereum (ETH)**: `0x8546e595004c4e2bb9dc55228977e3f382656598`
+- **EVM**: `0x8546e595004c4e2bb9dc55228977e3f382656598`
 - **USDT (TRC20)**: `TL8VBNjAQs8WuTUqrF1xaCXkVw3gHmuG6s`
 
 Every contribution, no matter the size, is greatly appreciated. Thank you for supporting the app!
@@ -155,6 +160,7 @@ Every contribution, no matter the size, is greatly appreciated. Thank you for su
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE), an open-source license that allows for modification, distribution, and private or commercial use. See the [LICENSE](LICENSE) file for details.
 
 ## Contact
 

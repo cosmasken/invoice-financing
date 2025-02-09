@@ -9,6 +9,7 @@ import CreditScore from '../components/CreditScore';
 import ErrorBoundary from '../ErrorBoundary';
 import InvoicePage from './InvoicePage';
 import PropTypes from 'prop-types';
+import Notifications from './Notifications'
 import useInvoiceStore from '../stores/invoiceStore';
 
 
@@ -16,6 +17,7 @@ const InvoiceFinancingApp = () => {
   const [invoices, setInvoices] = useState([]);
   const [selectedInvoice, setSelectedInvoice] = useState(null);
   const [showNewInvoiceModal, setShowNewInvoiceModal] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
 
   const handleAddInvoice = (invoice) => {
     setInvoices((prevInvoices) => [...prevInvoices, invoice]);
@@ -50,6 +52,13 @@ const InvoiceFinancingApp = () => {
           </div>
         </div>
         <RecentActivity className="mt-8" />
+
+        {
+          showNotification && (
+            <Notifications/>
+          )
+        }
+
         {showNewInvoiceModal && (
           <NewInvoiceModal 
             onClose={() => setShowNewInvoiceModal(false)} 

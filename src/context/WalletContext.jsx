@@ -10,21 +10,21 @@ export const WalletProvider = ({ children }) => {
   const { network, networkClient } = useNetwork(); // Access the current network and client
   const [wallet, setWallet] = useState(null);  // Store the current wallet
 
-  useEffect(() => {
-    if (networkClient) {
-      // If networkClient is set (either xrpClient or ethClient), initialize wallet logic
-      const initializeWallet = async () => {
-        if (network === 'xrp') {
-          const walletData = networkClient.createWallet();  // Using xrpClient's createWallet method
-          setWallet(walletData);  // Set the wallet object to state
-        } else {
-          // For Ethereum or other networks, implement respective logic
-          // Example: const walletData = ethClient.createWallet();
-        }
-      };
-      initializeWallet();
-    }
-  }, [network, networkClient]);
+  // useEffect(() => {
+  //   if (networkClient) {
+  //     // If networkClient is set (either xrpClient or ethClient), initialize wallet logic
+  //     const initializeWallet = async () => {
+  //       if (network === 'xrp') {
+  //         const walletData = networkClient.getWalletFromSecret();  // Using xrpClient's createWallet method
+  //         setWallet(walletData);  // Set the wallet object to state
+  //       } else {
+  //         // For Ethereum or other networks, implement respective logic
+  //         // Example: const walletData = ethClient.createWallet();
+  //       }
+  //     };
+  //     initializeWallet();
+  //   }
+  // }, [network, networkClient]);
 
   const sendXRP = async (fromSecret, toAddress, amount) => {
     if (network === 'xrp' && networkClient) {

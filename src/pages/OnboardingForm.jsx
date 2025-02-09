@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import useInvoiceStore from '../stores/invoiceStore';
+import {useAuth} from "../hooks/useAuth.js";
 import { Link } from 'react-router-dom';
 
 const OnboardingForm = () => {
@@ -11,6 +12,7 @@ const OnboardingForm = () => {
   const [details, setDetails] = useState('');
   const [errors, setErrors] = useState({});
   const { setAccountType: setStoreAccountType } = useInvoiceStore();
+  const auth = useAuth();
 
   const validateStep2 = () => {
     const newErrors = {};
@@ -27,6 +29,11 @@ const OnboardingForm = () => {
     if (step === 1) setStoreAccountType(accountType);
     setStep(step + 1);
   };
+
+    const login=()=>{
+  let result = auth.isAuthenticated = true;
+  console.log("is logged in ", result);
+    }
 
   const handlePreviousStep = () => setStep(step - 1);
 
@@ -139,9 +146,10 @@ const OnboardingForm = () => {
           <div className="text-center space-y-4">
             <p className="text-xl font-semibold">Account Setup Complete!</p>
             <button
+                onClick={login}
               className="bg-primary text-white p-2 rounded-md w-full"
             >
-              <Link to="/">Go to Dashboard</Link>
+              <Link to="/dashboard">Go to Dashboard</Link>
             </button>
           </div>
         )}
