@@ -67,7 +67,8 @@ The app is built with a focus on scalability and seamless user experience, adher
 ## Configuration
 
 - Configure your `.env` file for backend APIs, blockchain credentials, and database URLs. Example:
-  ```env
+
+  ```
 REACT_APP_API_URL=http://localhost:5000
 REACT_APP_XRP_NETWORK=testnet
 REACT_APP_HBAR_NETWORK=testnet

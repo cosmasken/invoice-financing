@@ -3,7 +3,7 @@ import useInvoiceStore from '../stores/invoiceStore';
 const Analytics = ({ invoices }) => {
   const { totalValue } = useInvoiceStore();
     return (
-      <div className="bg-white shadow-md rounded-lg p-4">
+      <div className="bg-white shadow-md rounded-lg p-4 cursor-pointer">
         <h2 className="text-xl font-semibold mb-4">Analytics</h2>
         <div className="space-y-4">
           <div className="bg-blue-100 p-3 rounded-md">

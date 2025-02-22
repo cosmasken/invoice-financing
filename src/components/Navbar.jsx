@@ -21,7 +21,7 @@ const Navbar = () => {
           <FaBars className="w-6 h-6" />
         </button>
 
-        <CiBellOn className="w-6 h-6" />
+        
         
         {/* Menu (Desktop and Mobile) */}
         <div
@@ -29,6 +29,7 @@ const Navbar = () => {
             menuOpen ? "block" : "hidden"
           } md:flex md:items-center space-x-4`}
         >
+          <CiBellOn className="w-6 h-6 cursor-pointer" />
           <button className="text-gray-600 hover:text-gray-800 relative group">
             <FiSettings className="w-6 h-6" />
             <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 bg-black text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity">

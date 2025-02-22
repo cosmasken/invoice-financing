@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import useInvoiceStore from '../stores/invoiceStore';
 const SummaryCard = ({ title, value, icon, color }) => (
-    <div className="bg-white rounded-lg shadow-md p-4 flex sm:flex-row items-center">
+    <div className="bg-white rounded-lg shadow-md p-4 flex sm:flex-row items-center cursor-pointer">
       <div className={`${color} text-white p-3 rounded-full mr-4`}>
         {icon}
       </div>
